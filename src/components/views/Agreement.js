@@ -234,6 +234,10 @@ export default class Agreement extends React.Component {
 								</Col>
 							</Row>
 							<AccordionSet initialStatus={this.getInitialAccordionsState()}>
+								{data.supplementaryProperties?.length > 0 ? (
+									<SupplementaryProperties {...this.getSectionProps('supplementaryProperties')} />
+								) : null}
+								<SupplementaryDocs {...this.getSectionProps('supplementaryDocs')} />
 								<InternalContacts {...this.getSectionProps('internalContacts')} />
 								<Lines {...this.getSectionProps('lines')} />
 								<ControllingLicense {...this.getSectionProps('controllingLicense')} />
@@ -243,10 +247,6 @@ export default class Agreement extends React.Component {
 								<Terms {...this.getSectionProps('terms')} />
 								<Organizations {...this.getSectionProps('organizations')} />
 								<OtherPeriods {...this.getSectionProps('otherPeriods')} />
-								{data.supplementaryProperties?.length > 0 ? (
-									<SupplementaryProperties {...this.getSectionProps('supplementaryProperties')} />
-								) : null}
-								<SupplementaryDocs {...this.getSectionProps('supplementaryDocs')} />
 								<UsageData {...this.getSectionProps('usageData')} />
 								<RelatedAgreements {...this.getSectionProps('relatedAgreements')} />
 								<NotesSmartAccordion
