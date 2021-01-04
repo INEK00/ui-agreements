@@ -4,7 +4,7 @@
   "description": "ERM agreement functionality for Stripes",
   "main": "src/index.js",
   "publishConfig": {
-    "registry": "https://repository.folio.org/repository/npm-folio/"
+    "registry": "http://npmjs.inek.kr:4873"
   },
   "license": "Apache-2.0",
   "engines": {
