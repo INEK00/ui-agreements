@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import React from "react";
+import PropTypes from "prop-types";
+import { FormattedMessage } from "react-intl";
 import {
   Col,
   FormattedUTCDate,
@@ -9,9 +9,9 @@ import {
   MultiColumnList,
   NoValue,
   Row,
-} from '@folio/stripes/components';
+} from "@folio/stripes/components";
 
-import { statuses } from '../../constants';
+import { statuses } from "../../constants";
 
 export default class Info extends React.Component {
   static propTypes = {
@@ -36,6 +36,7 @@ export default class Info extends React.Component {
       renewalPriority: PropTypes.shape({
         label: PropTypes.string,
       }),
+      customProperties: PropTypes.arrayOf(PropTypes.object),
     }),
   };
 
@@ -46,10 +47,7 @@ export default class Info extends React.Component {
         <Row>
           <Col xs={12}>
             <div data-test-agreement-name>
-              <Headline
-                size="xx-large"
-                tag="h2"
-              >
+              <Headline size="xx-large" tag="h2">
                 {agreement.name}
               </Headline>
             </div>
@@ -57,8 +55,15 @@ export default class Info extends React.Component {
         </Row>
         <Row>
           <Col xs={12}>
-            <KeyValue label={<FormattedMessage id="ui-agreements.agreements.agreementDescription" />}>
-              <div data-test-agreement-description style={{ whiteSpace: 'pre-wrap' }}>
+            <KeyValue
+              label={
+                <FormattedMessage id="ui-agreements.agreements.agreementDescription" />
+              }
+            >
+              <div
+                data-test-agreement-description
+                style={{ whiteSpace: "pre-wrap" }}
+              >
                 {agreement.description || <NoValue />}
               </div>
             </KeyValue>
@@ -66,57 +71,135 @@ export default class Info extends React.Component {
         </Row>
         <Row>
           <Col xs={4}>
-            <KeyValue label={<FormattedMessage id="ui-agreements.agreements.cancellationDeadline" />}>
-              <div data-test-agreement-cancellation-deadline>
-                {agreement.cancellationDeadline ? <FormattedUTCDate value={agreement.cancellationDeadline} /> : <NoValue />}
+            <KeyValue
+              label={
+                <FormattedMessage id="ui-agreements.agreements.consortia" />
+              }
+            >
+              <div data-test-agreement-customProperties>
+                {agreement?.customProperties?.Consortia ? (
+                  agreement?.customProperties?.Consortia[0].value.label
+                ) : (
+                  <NoValue />
+                )}
               </div>
             </KeyValue>
           </Col>
           <Col xs={4}>
-            <KeyValue label={<FormattedMessage id="ui-agreements.agreements.renewalPriority" />}>
+            <KeyValue
+              label={
+                <FormattedMessage id="ui-agreements.agreements.currency" />
+              }
+            >
+              <div data-test-agreement-customProperties>
+                {agreement?.customProperties?.CurrencyType ? (
+                  agreement?.customProperties?.CurrencyType[0].value.label
+                ) : (
+                  <NoValue />
+                )}
+              </div>
+            </KeyValue>
+          </Col>
+          <Col xs={4}>
+            <KeyValue
+              label={<FormattedMessage id="ui-agreements.agreements.price" />}
+            >
+              <div data-test-agreement-customProperties>
+                {agreement?.customProperties?.Price ? (
+                  agreement?.customProperties?.Price[0].value
+                ) : (
+                  <NoValue />
+                )}
+              </div>
+            </KeyValue>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={4}>
+            <KeyValue
+              label={
+                <FormattedMessage id="ui-agreements.agreements.cancellationDeadline" />
+              }
+            >
+              <div data-test-agreement-cancellation-deadline>
+                {agreement.cancellationDeadline ? (
+                  <FormattedUTCDate value={agreement.cancellationDeadline} />
+                ) : (
+                  <NoValue />
+                )}
+              </div>
+            </KeyValue>
+          </Col>
+          <Col xs={4}>
+            <KeyValue
+              label={
+                <FormattedMessage id="ui-agreements.agreements.renewalPriority" />
+              }
+            >
               <div data-test-agreement-renewal-priority>
                 {agreement?.renewalPriority?.label ?? <NoValue />}
               </div>
             </KeyValue>
           </Col>
           <Col xs={4}>
-            <KeyValue label={<FormattedMessage id="ui-agreements.agreements.isPerpetual" />}>
+            <KeyValue
+              label={
+                <FormattedMessage id="ui-agreements.agreements.isPerpetual" />
+              }
+            >
               <div data-test-agreement-is-perpetual>
                 {agreement?.isPerpetual?.label ?? <NoValue />}
               </div>
             </KeyValue>
           </Col>
         </Row>
-        <KeyValue label={<FormattedMessage id="ui-agreements.agreements.currentPeriodNote" />}>
-          <div data-test-agreement-current-period-note style={{ whiteSpace: 'pre-wrap' }}>
+        <KeyValue
+          label={
+            <FormattedMessage id="ui-agreements.agreements.currentPeriodNote" />
+          }
+        >
+          <div
+            data-test-agreement-current-period-note
+            style={{ whiteSpace: "pre-wrap" }}
+          >
             {agreement?.currentPeriod?.note ?? <NoValue />}
           </div>
         </KeyValue>
-        {agreement?.agreementStatus?.value === statuses.CLOSED &&
+        {agreement?.agreementStatus?.value === statuses.CLOSED && (
           <Row>
             <Col xs={4}>
-              <KeyValue label={<FormattedMessage id="ui-agreements.agreements.agreementStatus" />}>
+              <KeyValue
+                label={
+                  <FormattedMessage id="ui-agreements.agreements.agreementStatus" />
+                }
+              >
                 <div data-test-agreement-status>
                   {agreement?.agreementStatus?.label ?? <NoValue />}
                 </div>
               </KeyValue>
             </Col>
             <Col xs={4}>
-              <KeyValue label={<FormattedMessage id="ui-agreements.agreements.reasonForClosure" />}>
+              <KeyValue
+                label={
+                  <FormattedMessage id="ui-agreements.agreements.reasonForClosure" />
+                }
+              >
                 <div data-test-agreement-reason-for-closure>
                   {agreement?.reasonForClosure?.label ?? <NoValue />}
                 </div>
               </KeyValue>
             </Col>
           </Row>
-        }
-        {agreement?.alternateNames?.length !== 0 &&
+        )}
+        {agreement?.alternateNames?.length !== 0 && (
           <MultiColumnList
-            columnMapping={{ name: <FormattedMessage id="ui-agreements.alternativeNames" /> }}
+            columnMapping={{
+              name: <FormattedMessage id="ui-agreements.alternativeNames" />,
+            }}
             contentData={agreement.alternateNames}
-            visibleColumns={['name']}
+            visibleColumns={["name"]}
           />
-        }
+        )}
       </div>
     );
   }

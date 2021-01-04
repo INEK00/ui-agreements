@@ -1,0 +1,10 @@
+{
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace. D2Coding",
+  "editor.wordWrapColumn": 300,
+  "editor.wordWrap": "off",
+  "editor.fontLigatures": "D2Coding",
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "diffEditor.wordWrap": "off",
+  "editor.minimap.maxColumn": 200
+}
