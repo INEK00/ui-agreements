@@ -1,5 +1,5 @@
 {
-  "name": "@inek/folio-agreements",
+  "name": "@inek-folio/agreements",
   "version": "5.0.1",
   "description": "ERM agreement functionality for Stripes",
   "main": "src/index.js",
