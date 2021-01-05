@@ -51,7 +51,7 @@ const propTypes = {
 	}),
 };
 
-const filterPaneVisibilityKey = '@inek-folio/agreements/agreementsFilterPaneVisibility';
+const filterPaneVisibilityKey = '@folio-inek/agreements/agreementsFilterPaneVisibility';
 
 const Agreements = ({ children, data = {}, onNeedMoreData, queryGetter, querySetter, searchString = '', source }) => {
 	const count = source?.totalCount() ?? 0;
@@ -94,7 +94,7 @@ const Agreements = ({ children, data = {}, onNeedMoreData, queryGetter, querySet
 					const filterCount = activeFilters.string ? activeFilters.string.split(',').length : 0;
 
 					return (
-						<PersistedPaneset appId='@inek-folio/agreements' id='agreements-paneset'>
+						<PersistedPaneset appId='@folio-inek/agreements' id='agreements-paneset'>
 							{filterPaneIsVisible && (
 								<Pane
 									defaultWidth='20%'

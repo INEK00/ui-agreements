@@ -40,7 +40,7 @@ const propTypes = {
 	}),
 };
 
-const filterPaneVisibilityKey = '@inek-folio/agreements/eresourcesFilterPaneVisibility';
+const filterPaneVisibilityKey = '@folio-ineko/agreements/eresourcesFilterPaneVisibility';
 
 const EResources = ({
 	children,
@@ -89,7 +89,7 @@ const EResources = ({
 					const filterCount = activeFilters.string ? activeFilters.string.split(',').length : 0;
 
 					return (
-						<PersistedPaneset appId='@inek-folio/agreements' id='eresources-paneset'>
+						<PersistedPaneset appId='@folio-inek/agreements' id='eresources-paneset'>
 							{filterPaneIsVisible && (
 								<Pane
 									defaultWidth='20%'
