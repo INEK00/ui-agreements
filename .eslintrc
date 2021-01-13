@@ -1,7 +1,8 @@
 {
-  "parser": "babel-eslint",
-  "extends": "@folio/eslint-config-stripes",
-  "rules": {
-    "react/jsx-sort-props": "error"
-  }
+	"parser": "babel-eslint",
+	"extends": "@folio/eslint-config-stripes",
+	"allowIndentationTabs": true,
+	"rules": {
+		"react/jsx-sort-props": "error"
+	}
 }
